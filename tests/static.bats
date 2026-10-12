@@ -86,7 +86,7 @@ MANIFEST="$REPO_ROOT/manifest.json"
   local line
   while IFS= read -r line; do
     case $line in
-      "import QtQuick" | "import QtQuick.Controls" | "import Quickshell" | "import Quickshell.Io" \
+      "import QtQuick" | "import QtQuick.Controls" | "import QtQuick.Controls as QQC" | "import Quickshell" | "import Quickshell.Io" \
         | "import Quickshell.Wayland" | "import qs.Commons" | "import qs.Commons as Commons" | "import qs.Ui" \
         | 'import "PanelModel.js" as Model') ;;
       *) echo "unexpected import: $line"; return 1 ;;

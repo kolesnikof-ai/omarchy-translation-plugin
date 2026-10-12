@@ -350,7 +350,7 @@ Item {
           width: card.width - card.contentLeftInset - card.contentRightInset
           spacing: Style.spacing.rowGap
 
-          SearchableDropdown {
+          LanguageDropdown {
             width: (parent.width - swapButton.width - parent.spacing * 2) / 2
             showLabel: false
             options: Model.languageOptions(true)
@@ -368,7 +368,7 @@ Item {
             onClicked: root.swapLanguages()
           }
 
-          SearchableDropdown {
+          LanguageDropdown {
             width: (parent.width - swapButton.width - parent.spacing * 2) / 2
             showLabel: false
             options: Model.languageOptions(false)
