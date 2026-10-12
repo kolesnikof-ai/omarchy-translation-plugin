@@ -44,6 +44,14 @@ MANIFEST="$REPO_ROOT/manifest.json"
   [ "$status" -eq 0 ]
 }
 
+@test "the repository documents the license, removal, and external dependencies" {
+  [ -f "$REPO_ROOT/LICENSE" ]
+  grep -q 'omarchy plugin remove' "$REPO_ROOT/README.md"
+  grep -q 'curl' "$REPO_ROOT/README.md"
+  grep -q 'jq' "$REPO_ROOT/README.md"
+  grep -q 'wl-clipboard' "$REPO_ROOT/README.md"
+}
+
 @test "the checkout contains no symlinks (omarchy plugin validate rejects them)" {
   run find "$REPO_ROOT" -path "$REPO_ROOT/.git" -prune -o -type l -print
   [ "$status" -eq 0 ]

@@ -281,12 +281,12 @@ Item {
     onVisibleChanged: if (visible) root.focusKeys()
 
     readonly property var geometry: Model.cardGeometry({
-      position: String(root.ui.position || "cursor"),
+      position: String(root.ui.position || "center"),
       cursor: root.cursorPos,
       screenW: window.width,
       screenH: window.height,
-      width: Style.space(Number(root.ui.width) || 480),
-      height: Style.space(Number(root.ui.height) || 360),
+      width: Style.space(Number(root.ui.width) || 360),
+      height: Style.space(Number(root.ui.height) || 240),
       gap: root.gap,
       barPosition: root.shell && root.shell.barConfig ? String(root.shell.barConfig.position || "top") : "top",
       barSize: Style.bar.sizeHorizontal

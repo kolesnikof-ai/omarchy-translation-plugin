@@ -83,11 +83,11 @@ lookup_reply() {
   [ "$(jq_field "$output" '.senses[0].variants | join(",")')" = "бежать,работать" ]
 }
 
-@test "the default cap is 5 variants" {
+@test "the default cap is 3 variants" {
   microsoft_translate_reply "бежать" en
   lookup_reply
   translate_stdin "run"
-  [ "$(jq_field "$output" '.senses[0].variants | length')" -eq 5 ]
+  [ "$(jq_field "$output" '.senses[0].variants | length')" -eq 3 ]
 }
 
 @test "senses carry no examples, transcription or extra fields" {

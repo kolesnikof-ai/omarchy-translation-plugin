@@ -87,8 +87,8 @@ core::run() {
   }
   [[ -n $to ]] && explicit=1
 
-  max=$(config::get '.ui.max_variants // 5')
-  [[ $max =~ ^[0-9]+$ && $max -gt 0 ]] || max=5
+  max=$(config::get '.ui.max_variants // 3')
+  [[ $max =~ ^[0-9]+$ && $max -gt 0 ]] || max=3
 
   key=$(core::cache_key "$provider" "$src" "$dst" "$explicit" "$text")
   if result=$(cache::get "$key"); then

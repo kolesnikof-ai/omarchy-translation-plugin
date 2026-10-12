@@ -18,11 +18,11 @@ TR_CONFIG_DEFAULTS='{
   "deepl_formality": "default",
   "copy_fallback": false,
   "ui": {
-    "position": "cursor",
-    "width": 480,
-    "height": 360,
+    "position": "center",
+    "width": 360,
+    "height": 240,
     "show_language_switcher": false,
-    "max_variants": 5
+    "max_variants": 3
   }
 }'
 
