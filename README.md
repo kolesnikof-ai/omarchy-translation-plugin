@@ -15,6 +15,15 @@ omarchy plugin add https://github.com/kolesnikof-ai/omarchy-translation-plugin.g
 o.bind("SUPER + SHIFT + T", "Translate selection", "omarchy-translate")
 ```
 
+## Remove
+
+```bash
+~/.config/omarchy/plugins/translate.lookup/install.sh --uninstall
+omarchy plugin remove translate.lookup
+```
+
+`install.sh --uninstall` removes the `~/.local/bin/omarchy-translate` link and leaves `~/.config/omarchy/translate/config.json` in place. `omarchy plugin remove` disables the plugin and deletes its checkout. Run the uninstall first, while that checkout is still on disk.
+
 ## Use
 
 - Select text anywhere and press the hotkey. With nothing selected, the panel opens with an input field.
@@ -25,6 +34,20 @@ o.bind("SUPER + SHIFT + T", "Translate selection", "omarchy-translate")
 ## Configuration
 
 See `config/config.example.json`. Language codes are lowercase ISO 639-1 (`ru`, `en`, `de`). Words get part-of-speech variants only with the `microsoft` provider (`ui.max_variants` per part of speech). Set `ui.show_language_switcher` to `true` for source/target dropdowns inside the panel. `libretranslate_url` must be an `https://` URL without credentials; plain `http://` is accepted only for `localhost`, `127.0.0.1` and `[::1]`, because the API key is sent to that address.
+
+## Dependencies
+
+Required: `curl`, `jq`, `wl-clipboard` (`wl-copy` and `wl-paste`), `bash`, and `sha256sum`.
+
+Omarchy provides `omarchy-shell` and `omarchy-notification-send`. `hyprctl` is optional and supplies the cursor position and the active window. `notify-send` is used only when `omarchy-notification-send` is missing.
+
+There is no remote build. `omarchy plugin add` clones this repository and does not run an install hook.
+
+## Privileges
+
+The plugin is unsandboxed and runs with your user permissions. `install.sh` does not call sudo, does not download code, and does not replace an existing config file. When the file is already there, the script only sets its mode to `600`.
+
+Each request sends the API key and the source text to exactly one configured provider: DeepL, Microsoft, Google, Yandex, or the LibreTranslate URL. You add the hotkey to `~/.config/hypr/bindings.lua` yourself.
 
 ## Tests
 
