@@ -36,7 +36,7 @@ show_payload() {
   loading=$(summon_payload 1)
   [ "$(jq_field "$loading" .state)" = loading ]
   [ "$(jq_field "$loading" .source_text)" = hello ]
-  [ "$(jq_field "$loading" .ui.position)" = cursor ]
+  [ "$(jq_field "$loading" .ui.position)" = center ]
   result=$(show_payload 1)
   [ "$(jq_field "$result" .state)" = result ]
   [ "$(jq_field "$result" .result.translation)" = "привет" ]
